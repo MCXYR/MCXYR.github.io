@@ -32,8 +32,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MC_XYR博客の文章</title>
 <link rel="icon" href="image-txt/favicon.ico">
-    <!-- 引入Font Awesome图标库 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入Remix Icon图标库 -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -218,21 +218,21 @@ text-align: left;
     <!-- 音乐播放器 -->
 </div>
     <div id="music-player">
-        <button id="toggle-player" class="player-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="toggle-player" class="player-btn"><i class="ri-arrow-left-s-line"></i></button>
         <div id="player-content">
             <div id="song-info">正在加载音乐...</div>
             <div id="progress-container">
                 <div id="progress-bar"></div>
             </div>
             <div id="player-controls">
-                <button id="prev-btn" class="player-btn"><i class="fas fa-step-backward"></i></button>
-                <button id="play-btn" class="player-btn"><i class="fas fa-play"></i></button>
-                <button id="next-btn" class="player-btn"><i class="fas fa-step-forward"></i></button>
+                <button id="prev-btn" class="player-btn"><i class="ri-skip-back-line"></i></button>
+                <button id="play-btn" class="player-btn"><i class="ri-play-line"></i></button>
+                <button id="next-btn" class="player-btn"><i class="ri-skip-forward-line"></i></button>
             </div>
             <div id="mode-controls">
-                <button id="loop-mode" class="mode-btn" title="循环播放"><i class="fas fa-redo"></i></button>
-                <button id="list-mode" class="mode-btn active" title="顺序播放"><i class="fas fa-list-ol"></i></button>
-                <button id="stop-mode" class="mode-btn" title="播放后暂停"><i class="fas fa-stop"></i></button>
+                <button id="loop-mode" class="mode-btn" title="循环播放"><i class="ri-repeat-line"></i></button>
+                <button id="list-mode" class="mode-btn active" title="顺序播放"><i class="ri-play-list-line"></i></button>
+                <button id="stop-mode" class="mode-btn" title="播放后暂停"><i class="ri-stop-line"></i></button>
             </div>
         </div>
     </div>
@@ -344,7 +344,7 @@ text-align: left;
                 case 'stop':
                     // 播放后暂停
                     isPlaying = false;
-                    document.getElementById('play-btn').innerHTML = '<i class="fas fa-play"></i>';
+                    document.getElementById('play-btn').innerHTML = '<i class="ri-play-line"></i>';
                     break;
             }
         }
@@ -355,7 +355,7 @@ text-align: left;
             currentUrlIndex = 0; // 每次加载新歌时重置URL索引
             audio.src = song.url;
             document.getElementById('song-info').textContent = `${song.name} - ${song.artist}`;
-            document.getElementById('play-btn').innerHTML = '<i class="fas fa-play"></i>';
+            document.getElementById('play-btn').innerHTML = '<i class="ri-play-line"></i>';
             isPlaying = false;
         }
 
@@ -383,13 +383,13 @@ text-align: left;
             
             if (isPlaying) {
                 audio.pause();
-                document.getElementById('play-btn').innerHTML = '<i class="fas fa-play"></i>';
+                document.getElementById('play-btn').innerHTML = '<i class="ri-play-line"></i>';
             } else {
                 audio.play().catch(e => {
                     console.error('播放失败:', e);
                     handleAudioError();
                 });
-                document.getElementById('play-btn').innerHTML = '<i class="fas fa-pause"></i>';
+                document.getElementById('play-btn').innerHTML = '<i class="ri-pause-line"></i>';
             }
             isPlaying = !isPlaying;
         }
