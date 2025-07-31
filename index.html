@@ -3,7 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MC_XYRの博客</title>
+<script>
+ let normal_title = "MC_XYRの博客"; 
+    let hideTimeoutId;
+    let returnTimeoutId;
+
+    document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'hidden') {
+            // 用户切出后，12 秒后修改标题
+            hideTimeoutId = setTimeout(function() {
+                document.title = '记得常回来(◍•ᴗ•◍)';
+            }, 5000); // 5 秒 = 5000 毫秒
+        } else {
+            // 用户返回时：
+            // 1. 清除切出时的定时器（防止标题被修改）
+            clearTimeout(hideTimeoutId);
+            
+            // 2. 临时修改标题为"你终于回来啦<(◍•ᴗ•◍)>"
+            document.title = '你终于回来啦<(◍•ᴗ•◍)>';
+            
+            // 3. 5 秒后恢复原标题
+            clearTimeout(returnTimeoutId); // 防止多次触发导致冲突
+            returnTimeoutId = setTimeout(function() {
+                document.title = normal_title;
+            }, 5000); // 5 秒 = 5000 毫秒
+        }
+    });
+</script>
     <link rel="icon" href="image/favicon.ico">
     <!-- 引入Remix Icon图标库 -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
